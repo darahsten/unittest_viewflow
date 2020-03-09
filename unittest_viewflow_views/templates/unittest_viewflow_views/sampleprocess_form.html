@@ -1,0 +1,28 @@
+{% extends 'unittest_viewflow_views/base.html' %}
+{% load static %}
+{% load material_form material_frontend %}
+ {% load i18n static viewflow material_form material_frontend %}
+{% block content %}
+
+<div class="col s12 m12 l9">
+<div class="card">
+    <div class="card-title card-content"><h5><strong>Check data</strong></h5> </h5></div>
+        <form role="form" method="POST" enctype="multipart/form-data">
+            <div class="card-content">
+               {% csrf_token %}
+                {% form form=form %}{% endform %}
+                {{ activation.management_form }}
+            </div>
+            <div class="card-action row">
+                <div class="col s12 right-align">
+                    <button type="submit" name="_save" class="btn primary white-text">{% trans 'Save' %}</button>
+                </div>
+            </div>
+        </form>
+</div>
+</div>
+{% block javascript %}
+{{ block.super }}
+{{ form.media }}
+{% endblock javascript %}
+{% endblock content %}

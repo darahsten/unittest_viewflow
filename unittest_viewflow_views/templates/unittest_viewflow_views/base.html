@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load i18n static %}
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% block title %}
+        {% if request.activation.process %}
+          {{request.activation.process }} Information
+        {% else %}
+         Information
+        {% endif %}
+        {% endblock %}
+     </title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% load static i18n %}
+    <!-- JQuery may be required on other pages -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    {% block django-material %}
+    {% include 'material/includes/material_css.html' %}
+    {% include 'material/includes/material_js.html' %}
+    {% endblock django-material %}
+    <style>
+        label {
+            font-size: 1.1em;
+        }
+        .nav-wrapper .brand-logo img {
+            height: 2em;;
+        }
+    </style>
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <nav class="top-nav">
+        <div class="container-fluid">
+            <div class="navbar-fixed">
+                <div class="nav-wrapper">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="" class="brand-logo">
+                        <img src="{{ site_logo_url }}" class="img-response img-rounded brand-logo"
+                             style="margin-left:0.25em; padding-top: 0.7em;">
+                    </a>
+                    <a class="brand-logo center hide-on-med-and-down"> INFOR </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% if request.user.is_authenticated %}
+
+    {% endif %}
+</header>
+<main>
+    {% block menu_block %}
+    {% endblock menu_block %}
+    <div class="container-fluid">
+        <div class="row" style="display:contents">
+            <div class="row">
+                <div class="col s12 m9 l9">
+                    {% if messages %}
+            <div class="row teal-text">
+                {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    {% block footer %}{% endblock footer %}
+    {% block custom-footer %}{% endblock custom-footer %}
+    {% block modal %}{% endblock modal %}
+    {% block javascript %}
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+    {% endblock javascript %}
+</footer>
+</body>
+</html>
+
