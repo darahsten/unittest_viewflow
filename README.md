@@ -1,5 +1,9 @@
 Sample of unittest of Viewflow views in isolation
 --------------------------------------------------
+License
+=======
+This is a demo only. Meant for learning purposes only. You have freedom 
+to do what you want with it.
 
 Tests viewflow views in isolation using factory boy and a post generation hook.
 
