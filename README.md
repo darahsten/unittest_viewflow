@@ -7,8 +7,7 @@ to do what you want with it.
 
 Tests viewflow views in isolation using factory boy and a post generation hook.
 
-Viewflow views are difficult to test in isolation because each view is requires that all tasks previous to
-it have been complete. The official repository examples as of Mar 2020.
+Viewflow views are difficult to test in isolation because each view requires that all previous tasks are complete.
 
 In the official repository https://github.com/viewflow/cookbook/blob/master/helloworld/demo/tests.py. views are tested 
 as part of the flow.
